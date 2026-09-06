@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ho Neu Jak</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="topbar">
+
+      <div class="logo-container">
+        <img src="logo2.png" alt="Ho Neu Jak Logo" class="logo">
+        <span class="brand-name">Ho Neu Jak</span>
+    </div>
+
+      <div class="brand">
+        <span class="brand-icon">🌐 Ho</span>
+      </div>
+
+    </header>
+
+
+    <main>
+
+      <!-- =========================================
+           HERO
+      ========================================== -->
+
+      <section class="hero">
+
+        <p class="eyebrow">
+          Halo! 👋
+        </p>
+
+        <h1>
+          Mau pergi ke mana?
+        </h1>
+
+        <p class="muted">
+          Pesan perjalanan dengan cepat dan mudah.
+        </p>
+
+      </section>
+
+
+      <!-- =========================================
+           PROGRESS
+      ========================================== -->
+
+      <div class="progress">
+
+        <div class="step active">
+          <span>1</span>
+          <small>Layana</small>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="step">
+          <span>2</span>
+          <small>Lokasi</small>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="step">
+          <span>3</span>
+          <small>Estimasi</small>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="step">
+          <span>4</span>
+          <small>Selesai</small>
+        </div>
+
+      </div>
+
+
+      <!-- =========================================
+           PANEL 1 - PILIH LAYANAN
+      ========================================== -->
+
+      <section class="panel" id="servicePanel">
+
+        <div class="section-title">
+
+          <div>
+
+            <p class="eyebrow">
+              Pilih layanan
+            </p>
+
+            <h2>
+              Layanan untukmu
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="services">
+
+          <button
+            class="service selected"
+            data-service="Ojek"
+            data-base="10000"
+            type="button"
+          >
+
+            <span class="service-icon">
+              🛵
+            </span>
+
+            <strong>
+              GOjek
+            </strong>
+
+            <small>
+              Cepat & praktis
+            </small>
+
+          </button>
+
+
+          <button
+            class="service"
+            data-service="Mobil"
+            data-base="18000"
+            type="button"
+          >
+
+            <span class="service-icon">
+              🚗
+            </span>
+
+            <strong>
+              GOcar
+            </strong>
+
+            <small>
+              Nyaman untuk perjalanan
+            </small>
+
+          </button>
+
+
+          <button
+            class="service"
+            data-service="Kirim Barang"
+            data-base="12000"
+            type="button"
+          >
+
+            <span class="service-icon">
+              📦
+            </span>
+
+            <strong>
+              Kirim Barang
+            </strong>
+
+            <small>
+              Antar paket dengan aman
+            </small>
+
+          </button>
+
+
+          <button
+            class="service"
+            data-service="Makanan"
+            data-base="10000"
+            type="button"
+          >
+
+            <span class="service-icon">
+              🍔
+            </span>
+
+            <strong>
+              Makanan
+            </strong>
+
+            <small>
+              Pesan makanan favorit
+            </small>
+
+          </button>
+
+        </div>
+
+
+        <button
+          class="primary"
+          id="startBtn"
+          type="button"
+        >
+          Lanjutkan <span>→</span>
+        </button>
+
+      </section>
+
+
+      <!-- =========================================
+           PANEL 2 - LOKASI
+      ========================================== -->
+
+      <section
+        class="panel hidden"
+        id="locationPanel"
+      >
+
+        <div
+          class="back"
+          data-back="servicePanel"
+        >
+          ← Kembali
+        </div>
+
+
+        <p class="eyebrow">
+          Lokasi perjalanan
+        </p>
+
+        <h2>
+          Tentukan lokasi
+        </h2>
+
+
+        <!-- LOKASI PENJEMPUTAN -->
+
+        <label>
+          📍 Lokasi penjemputan
+        </label>
+
+
+        <div class="input-wrap">
+
+          <input
+            id="pickup"
+            type="text"
+            placeholder="Masukkan lokasi penjemputan"
+            readonly
+          >
+
+        </div>
+
+
+        <button
+          class="location-btn"
+          id="locationBtn"
+          type="button"
+        >
+          📍 Gunakan Lokasi Saya
+        </button>
+
+
+        <p
+          class="location-status"
+          id="locationStatus"
+        >
+          Lokasi GPS belum digunakan
+        </p>
+
+
+        <!-- TUJUAN -->
+
+        <label>
+          🔍 Tujuan
+        </label>
+
+
+        <div class="destination-search">
+
+          <div class="input-wrap">
+
+            <input
+              id="destination"
+              type="text"
+              placeholder="Cari tempat atau alamat"
+              autocomplete="off"
+            >
+
+
+            <button
+              class="clear"
+              id="clearDestination"
+              type="button"
+              aria-label="Hapus tujuan"
+            >
+              ×
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="location-note">
+          💡 Ketik nama tempat, alamat, atau lokasi tujuan kemudian pilih salah satu hasil Google Maps.
+        </div>
+
+
+        <!-- =====================================
+             GOOGLE MAP
+        ====================================== -->
+
+        <div
+          id="map"
+          class="map"
+        ></div>
+
+
+        <!-- HITUNG PERJALANAN -->
+
+        <button
+          class="primary"
+          id="routeBtn"
+          type="button"
+        >
+          Lihat Perjalanan <span>→</span>
+        </button>
+
+      </section>
+
+
+      <!-- =========================================
+           PANEL 3 - INFORMASI PERJALANAN
+      ========================================== -->
+
+      <section
+        class="panel hidden"
+        id="tripPanel"
+      >
+
+        <div
+          class="back"
+          data-back="locationPanel"
+        >
+          ← Ubah lokasi
+        </div>
+
+
+        <p class="eyebrow">
+          Informasi perjalanan
+        </p>
+
+        <h2>
+          Perjalananmu
+        </h2>
+
+
+        <div class="route-card">
+
+          <div class="route-row">
+
+            <span class="dot green"></span>
+
+            <div>
+
+              <small>
+                Penjemputan
+              </small>
+
+              <strong id="pickupText"></strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="route-line"></div>
+
+
+          <div class="route-row">
+
+            <span class="dot red"></span>
+
+            <div>
+
+              <small>
+                Tujuan
+              </small>
+
+              <strong id="destinationText"></strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="trip-info">
+
+          <div>
+
+            <span>
+              Jarak
+            </span>
+
+            <strong id="distance">
+              -
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Estimasi
+            </span>
+
+            <strong id="duration">
+              -
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Tarif
+            </span>
+
+            <strong id="fare">
+              -
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="payment">
+
+          <div>
+
+            <span>
+              💵
+            </span>
+
+            <div>
+
+              <small>
+                Metode pembayaran
+              </small>
+
+              <strong>
+                Tunai
+              </strong>
+
+            </div>
+
+            <span>
+              ›
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="primary"
+          id="confirmBtn"
+          type="button"
+        >
+          Konfirmasi Pesanan <span>✓</span>
+        </button>
+
+      </section>
+
+
+      <!-- =========================================
+           PANEL 4 - KONFIRMASI
+      ========================================== -->
+
+      <section
+        class="panel success hidden"
+        id="confirmPanel"
+      >
+
+        <div class="success-icon">
+          ✓
+        </div>
+
+
+        <p class="eyebrow">
+          Pesanan berhasil
+        </p>
+
+
+        <h2>
+          Driver sedang dicari!
+        </h2>
+
+
+        <p class="muted">
+
+          Pesanan
+          <strong id="confirmedService"></strong>
+          kamu sudah diterima.
+
+        </p>
+
+
+        <div class="success-card">
+
+          <div>
+
+            <span>
+              Penjemputan
+            </span>
+
+            <strong id="confirmedPickup"></strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Tujuan
+            </span>
+
+            <strong id="confirmedDestination"></strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Total
+            </span>
+
+            <strong id="confirmedFare"></strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="driver-status">
+
+          <span class="pulse"></span>
+
+          Mencari driver terdekat...
+
+        </div>
+
+
+        <button
+          class="secondary"
+          id="newOrderBtn"
+          type="button"
+        >
+          Buat Pesanan Baru
+        </button>
+
+      </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+      Created by Imam Jihan Fahlevi 2026
+    </footer>
+
+  </div>
+
+
+  <!-- =========================================
+       JAVASCRIPT APLIKASI
+  ========================================== -->
+
+  <script src="script.js"></script>
+
+
+  <!-- =========================================
+       GOOGLE MAPS JAVASCRIPT API
+       
+       GANTI API_KEY_ANDA DENGAN API KEY
+       GOOGLE MAPS MILIK ANDA
+  ========================================== -->
+
+  <script
+    async
+    src="https://maps.googleapis.com/maps/api/js?key=API_KEY_AQ.Ab8RN6J6vr2PrZub4l03j8rQHLyoRDRoc9nyDj5sdLUmaU0Aow&loading=async&libraries=places&callback=initGoogleMaps">
+  </script>
+
+</body>
+</html>
